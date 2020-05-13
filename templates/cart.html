@@ -22,7 +22,7 @@
 					</div>
 					<div class="col-lg-4">
 						<h3 class="bold">{{ product['name'] }}</h3>
-						<p>&dollar;{{ product['price'] / 100 }}</p>
+						<p id="dress_price">&dollar;{{ product['price'] / 100 }}</p>
 						<br />
 						<p>
 							<a href="{{ url_for('remove_from_cart', index=product['index']) }}">
@@ -31,6 +31,8 @@
 							</button></a>
 						</p>
 					</div>
+					
+					</script>
 					<div class="col-lg-2">
 						<h3>Quantity</h3>
 						<p>
@@ -71,6 +73,11 @@
 					<p>Total <strong class="pull-right">&dollar;{{ grand_total_plus_shipping / 100 }}</strong></p>
 				</li>
 			</ul>
+			<script>
+				var dress_price = document.getElementsByClassName("pull-right")[0].innerHTML;
+				gtm_price = dress_price.substr(1);
+				dataLayer = [{'productPrice': gtm_price}];
+			</script>
 			<div class="panel-footer">
 				<a href="{{ url_for('checkout') }}" class="btn btn-primary btn-sm">
 					Checkout <i class="glyphicon glyphicon-chevron-right"></i>
