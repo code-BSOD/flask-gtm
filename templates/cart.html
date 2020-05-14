@@ -76,7 +76,8 @@
 			<script>
 				var dress_price = document.getElementsByClassName("pull-right")[0].innerHTML;
 				gtm_price = dress_price.substr(1);
-				dataLayer = [{'productPrice': gtm_price}];
+				window.dataLayer = window.dataLayer || []
+				dataLayer.push({"productPrice": gtm_price})
 			</script>
 			<div class="panel-footer">
 				<a href="{{ url_for('checkout') }}" class="btn btn-primary btn-sm">
